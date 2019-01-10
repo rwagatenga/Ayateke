@@ -31,10 +31,10 @@ Route::post('/add', 'HomeController@add');
 Route::get('/add/{$id}', 'AddController@addFunction');
 Route::get('/confirm', 'HomeController@confirm');
 Route::get('/cancel/{id}', 'HomeController@cancel');
-<<<<<<< HEAD
+
 Route::get('/view', 'AddController@view');
-=======
->>>>>>> aa659fe1537f4faa13cb03b5d947c812ed3c169e
+
+
 Route::get('/message', function(){
 	Nexmo::message()->send([
 		'to' => '250781448238',

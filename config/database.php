@@ -1,5 +1,8 @@
 <?php
 
+$DATABASE_URL=parse_url('postgres://jwouzyueemgcfy:727c20a27be5371ec5a48257c6ceccb112a2a675f36a1b438016b2c3703530c5@ec2-23-23-253-106.compute-1.amazonaws.com:5432/deeub60sjg6s22');
+
+
 return [
 
     /*
@@ -13,6 +16,8 @@ return [
     |
     */
 
+    /*'default' => env('DB_CONNECTION', 'mysql'),*/
+    'default' => env('DB_CONNECTION', ' pgsql'),
     'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
@@ -53,6 +58,20 @@ return [
             'strict' => true,
             'engine' => null,
         ],
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'host' => $DATABASE_URL["host"],
+            'port' => $DATABASE_URL["port"],
+            'database' => ltrim($DATABASE_URL["path"], "/"),
+            'username' => $DATABASE_URL["user"],
+            'password' => $DATABASE_URL["pass"],
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'require',
+        ],
+
+        /*'pgsql' => [
 
         'pgsql' => [
             'driver' => 'pgsql',
@@ -65,6 +84,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
+        ],*/
         ],
 
         'sqlsrv' => [
@@ -77,9 +97,6 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
         ],
-
-    ],
-
     /*
     |--------------------------------------------------------------------------
     | Migration Repository Table
